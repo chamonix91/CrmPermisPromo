@@ -38,18 +38,8 @@
             "./src/Repository/.gitignore"
         ]
     },
-    "doctrine/doctrine-migrations-bundle": {
-        "version": "1.2",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "1.2",
-            "ref": "c1431086fec31f17fbcfe6d6d7e92059458facc1"
-        },
-        "files": [
-            "./config/packages/doctrine_migrations.yaml",
-            "./src/Migrations/.gitignore"
-        ]
+    "doctrine/doctrine-cache-bundle": {
+        "version": "1.4.0"
     },
     "doctrine/event-manager": {
         "version": "1.1.0"
@@ -62,9 +52,6 @@
     },
     "doctrine/lexer": {
         "version": "1.0.2"
-    },
-    "doctrine/migrations": {
-        "version": "2.2.1"
     },
     "doctrine/orm": {
         "version": "v2.7.0"
@@ -141,12 +128,6 @@
             "./config/routes/nelmio_api_doc.yaml"
         ]
     },
-    "ocramius/package-versions": {
-        "version": "1.4.2"
-    },
-    "ocramius/proxy-manager": {
-        "version": "2.1.1"
-    },
     "php": {
         "version": "7.1"
     },
@@ -173,18 +154,6 @@
     },
     "psr/log": {
         "version": "1.1.2"
-    },
-    "sensio/framework-extra-bundle": {
-        "version": "5.2",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "5.2",
-            "ref": "fb7e19da7f013d0d422fa9bce16f5c510e27609b"
-        },
-        "files": [
-            "./config/packages/sensio_framework_extra.yaml"
-        ]
     },
     "swiftmailer/swiftmailer": {
         "version": "v6.2.3"
@@ -291,9 +260,6 @@
     "symfony/options-resolver": {
         "version": "v4.4.2"
     },
-    "symfony/orm-pack": {
-        "version": "v1.0.7"
-    },
     "symfony/polyfill-intl-icu": {
         "version": "v1.13.1"
     },
@@ -356,9 +322,6 @@
     "symfony/service-contracts": {
         "version": "v1.1.8"
     },
-    "symfony/stopwatch": {
-        "version": "v4.4.2"
-    },
     "symfony/swiftmailer-bundle": {
         "version": "2.5",
         "recipe": {
@@ -409,9 +372,6 @@
             "./templates/base.html.twig"
         ]
     },
-    "symfony/twig-pack": {
-        "version": "v1.0.0"
-    },
     "symfony/validator": {
         "version": "4.3",
         "recipe": {
@@ -434,9 +394,6 @@
     "symfony/yaml": {
         "version": "v4.4.2"
     },
-    "twig/extra-bundle": {
-        "version": "v3.0.1"
-    },
     "twig/twig": {
         "version": "v2.12.3"
     },
@@ -448,12 +405,6 @@
     },
     "willdurand/negotiation": {
         "version": "v2.3.1"
-    },
-    "zendframework/zend-code": {
-        "version": "3.4.1"
-    },
-    "zendframework/zend-eventmanager": {
-        "version": "3.2.1"
     },
     "zircote/swagger-php": {
         "version": "2.0.14"
