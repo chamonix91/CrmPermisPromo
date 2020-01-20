@@ -14,6 +14,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\Controller\FOSRestController;
+use JMS\Serializer\SerializerInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -26,32 +28,9 @@ use Symfony\Component\HttpFoundation\Response;
 class SourceController extends FOSRestController
 {
 
-
-
-
-    /**
-     * Creates Source
-     * @Rest\Post("/sources")
-     * @param Request $request
-     * @param EntityManagerInterface $em
-     * @return string
-     */
-    public function postSources(Request $request, EntityManagerInterface $em)
-    {
-        $source = new Source();
-        $source->setLibelle($request->get('libelle'));
-        $source->setWork($request->get('work'));
-
-        $em->persist($source);
-        $em->flush();
-
-        //dump($source);die();
-        //return View::create($source, Response::HTTP_CREATED);
-        return $response = new Response ("source added", Response::HTTP_OK);
-
-        //return $response->getContent();
-
-    }
+    ///////////////////
+    ///  Add source ////
+    /// ////////////////
 
     /**
      * Creates Source
@@ -64,12 +43,107 @@ class SourceController extends FOSRestController
 
     public function postSource(Request $request,SourceService $SourceService,EntityManagerInterface $em )
     {
-        $source = $SourceService->newSource($request->get('libelle'), $request->get('work'), $em);
+        $SourceService->newSource($request->get('libelle'), $request->get('work'), $em);
 
         return $response = new Response ("source added", Response::HTTP_OK);
     }
 
 
+
+    /////////////////////////
+    ///  get all sources ////
+    /////////////////////////
+
+
+    /**
+     * Creates Source
+     * @Rest\Get("/source")
+     * @param EntityManagerInterface $em
+     * @param SourceService $SourceService
+     * @param SerializerInterface $serializer
+     * @return Response
+     */
+
+    public function AllSources(EntityManagerInterface $em, SourceService $SourceService, SerializerInterface $serializer )
+    {
+        $sources = $SourceService->AllSource($em, $serializer);
+
+
+        return $response = new Response ($sources, Response::HTTP_OK);
+    }
+
+
+    ///////////////////////////
+    ///  get source by id /////
+    ///////////////////////////
+
+
+    /**
+     * Creates Source
+     * @Rest\Get("/source/{id}")
+     * @param EntityManagerInterface $em
+     * @param SourceService $SourceService
+     * @param SerializerInterface $serializer
+     * @param int $id
+     * @return Response
+     */
+
+    public function SourceById(EntityManagerInterface $em, SourceService $SourceService, SerializerInterface $serializer,$id)
+    {
+
+        $sources = $SourceService->SourceById($em, $serializer, $id);
+
+
+        return $response = new Response ($sources, Response::HTTP_OK);
+    }
+
+
+    ///////////////////////
+    ///  update source ////
+    /// ///////////////////
+
+    /**
+     * Creates Source
+     * @Rest\Put("/source/{id}")
+     * @param EntityManagerInterface $em
+     * @param Request $request
+     * @param SourceService $SourceService
+     * @param $id
+     * @return string
+     */
+
+    public function updateSource(EntityManagerInterface $em, Request $request, SourceService $SourceService, $id)
+    {
+        $SourceService->UpdateSource($request->get('libelle'), $request->get('work'), $em, $id, $request);
+
+        return $response = new Response ("source updated", Response::HTTP_OK);
+    }
+
+
+    ///////////////////////
+    ///  delete source ////
+    /// ///////////////////
+
+
+    /**
+     * Creates Source
+     * @Rest\Delete("/source/{id}")
+     * @param EntityManagerInterface $em
+     * @param SourceService $SourceService
+     * @param SerializerInterface $serializer
+     * @param int $id
+     * @return Response
+     */
+
+
+    public function DeleteSource(EntityManagerInterface $em, SourceService $SourceService,$id)
+    {
+
+        $source = $SourceService->DeleteSource($em, $id);
+
+
+        return $response = new Response ("source deleted", Response::HTTP_OK);
+    }
 
 
 
