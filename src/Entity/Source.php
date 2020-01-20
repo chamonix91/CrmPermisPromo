@@ -7,11 +7,12 @@
  */
 
 namespace App\Entity;
-use Doctrine\Common\Collections\ArrayCollection;
+
 use Doctrine\ORM\Mapping as ORM;
+
 /**
  * @ORM\Table(name="source")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="SourceRepository")
  */
 class Source
 {
@@ -74,6 +75,7 @@ class Source
 
     /**
      * @param mixed $work
+     *
      */
     public function setWork($work): void
     {
